@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Map nỗi đau × USP Flossie Neo</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--tx:#1f2328;--mut:#6b7280;--bd:#e3e3df;--p:#1e6b4f;--pbg:#cfeadb;--s:#8a6a00;--sbg:#fff0c2;--n1:#2563eb;--n2:#0f766e;--n3:#b45309;--warn:#fdecec;--warnbd:#e8b4b4}
+@media(prefers-color-scheme:dark){:root{--bg:#16181c;--card:#1f2228;--tx:#e8e9ec;--mut:#9aa1ad;--bd:#33373f;--p:#7fd6ae;--pbg:#1f4331;--s:#e6c04a;--sbg:#3b3212;--n1:#6aa0ff;--n2:#4fd1c0;--n3:#f0a45a;--warn:#3a2224;--warnbd:#7a3b3f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:1200px;margin:0 auto;padding:20px 16px 56px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:0 0 8px}.sub{color:var(--mut);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+button{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit}
+button.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.sc{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:6px 7px;border-bottom:1px solid var(--bd);vertical-align:middle}
+th{color:var(--mut);font-weight:600;text-align:center;font-size:12px;position:sticky;top:0;background:var(--card)}
+td.c{text-align:center;width:62px}
+th.l,td.l{text-align:left}
+tr.grp td{background:var(--bg);font-weight:700;padding:8px 7px}
+tr.pain{cursor:pointer}tr.pain:hover td{background:var(--bg)}
+.m2{background:var(--pbg);color:var(--p);font-weight:700}.m1{background:var(--sbg);color:var(--s)}
+.chip{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;margin:1px 2px 1px 0;border:1px solid var(--bd)}
+.chip.n{background:var(--pbg);color:var(--p);border-color:transparent}
+.det{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:6px}
+@media(max-width:760px){.det{grid-template-columns:1fr}}
+.det b{display:block;color:var(--mut);font-size:12px;font-weight:600}
+.warn{background:var(--warn);border:1px solid var(--warnbd);border-radius:8px;padding:8px 10px;margin-top:8px}
+.leg{display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:12px;margin:0 0 10px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.g3{grid-template-columns:1fr}}
+ul{margin:4px 0 0;padding-left:18px}li{margin:2px 0}
+</style></head><body><div class="w">
+<h1>Map nỗi đau × USP · Flossie Neo</h1>
+<p class="sub">3 tệp ưu tiên: hôi miệng (nữ 25–30), N-OC-01 (nữ 24–30), niềng răng (nữ 18–25). Căn cứ: tài liệu sản phẩm Neo, 3 file persona, sheet PICK TỆP. Mức khớp là đánh giá của tôi từ cơ chế sản phẩm và pain trong persona, chưa phải số liệu hiệu quả.</p>
+
+<div class="ctl" id="tabs"></div>
+<div id="view"></div>
+</div>
+<script>
+const U=[
+["U1","Đầu chữ U 2 chiều","Hai tia nước đồng thời lên 2 mặt răng, hội tụ tại kẽ; luồn qua mắc cài kim loại. Xử lý 2 mặt trong một lượt."],
+["U2","Xung tần 1.000–2.860","Xung 1.000–2.860 lần/phút (số lần đẩy piston), hỗ trợ đẩy cặn tại vùng kẽ. Nói \"hỗ trợ\", không nói \"đánh bay\"."],
+["U3","50 mức lực","5 chế độ × 10 mức. Sensitive 80, Pulse 90, Soft 70, Normal 100, Strong 130 PSI (±20%). Chỉnh nhẹ khi nướu nhạy."],
+["U4","Đầu cạo lưỡi có nước","Cạo và cuốn trôi lớp bám trên lưỡi bằng dòng nước, cùng một thân máy. Giá trị nằm ở tích hợp, không phải USP riêng."],
+["U5","Đầu tiêu chuẩn tia mảnh","Tia nước mảnh qua lỗ 0,72 mm, nhắm chính xác một điểm khó riêng lẻ. Là đầu bổ sung, không phải đầu chính."],
+["U6","Đầu xoay 360°","Đầu phun xoay giúp tiếp cận linh hoạt các vị trí trong khoang miệng, giảm xoay tay cầm."],
+["U7","Bình 300ml tháo rời","Một lần đổ đầy là đủ cho một lượt; tháo rời dễ vệ sinh, không góc chết. Sạc Type-C, pin 1.500mAh khoảng 20–30 lần."],
+["U8","Ghi nhớ lần dùng gần nhất","Chế độ ghi nhớ thông minh, hạn chế chỉnh lại mỗi lần dùng; dễ giữ thói quen."],
+["U9","Thiết kế & an tâm","3 màu đen/trắng/hồng, bình nhám đục; IPX7; bảo hành 12 tháng, 1 đổi 1 với lỗi thuộc điều kiện bảo hành."]];
+const T={
+H:{name:"Tệp 1 · Hôi miệng, nữ 25–30",color:"--n1",desc:"Đã chăm kỹ (chải sát viền nướu, cạo lưỡi, chỉ, súc miệng, kẹo/xịt) nhưng vẫn lo hơi thở khi giao tiếp gần. Bối cảnh: văn phòng, hẹn hò, gặp khách. Tầng nhận thức cao, cần proof cơ chế và gom bước hơn là giải thích pain dài.",
+ avoid:["Không hứa chữa hôi miệng hay xử lý nguyên nhân ngoài khoang miệng (viêm nha chu, túi nha chu sâu, dạ dày…). Neo là bước bổ sung sau đánh răng.","Không nói \"cặn nào cũng bay\", \"sạch tuyệt đối\", \"hết hôi miệng\".","Đầu cạo lưỡi không phải USP riêng; nói giá trị tích hợp.","Không hứa phản ứng của đồng nghiệp hay người ấy."]},
+O:{name:"Tệp 2 · N-OC-01, chăm ngoại hình bỏ quên răng miệng, nữ 24–30",color:"--n2",desc:"Skincare, makeup, tóc, body rất kỹ nhưng oral care chỉ dừng ở đánh răng. Bối cảnh: GRWM, morning/night routine, chuẩn bị hẹn hò, gặp crush, chụp ảnh. Chưa nhận ra vùng kẽ bị bỏ quên.",
+ avoid:["Không nói làm trắng răng hay thay đổi màu răng.","Không nói Neo thay thế bàn chải; Neo bổ sung vùng kẽ.","Không dùng \"độc quyền\", \"tiên phong\" khi chưa có căn cứ.","Không hứa người khác sẽ khen hay phản ứng tích cực."]},
+B:{name:"Tệp 3 · Niềng răng, nữ 18–25",color:"--n3",desc:"Đang niềng (mắc cài kim loại hoặc khay trong), đã có hoặc từng dùng tăm nước tia 1 chiều. Không cần educate bất lực với phương pháp truyền thống; đi thẳng vào hạn chế của tia 1 chiều và proof đúng vùng khó.",
+ avoid:["Không nói \"biết chắc răng đã sạch\" hay \"không còn sót cặn\".","Không thay chỉ định vệ sinh của bác sĩ chỉnh nha; không tác động dịch chuyển răng; không điều trị sâu răng, bệnh nướu.","Demo phải xịt vào vùng khó thật (mắc cài, dưới dây cung, mặt trong), không chỉ mặt ngoài dễ tiếp cận.","Không hứa bác sĩ hay bạn bè sẽ khen."]}};
+// fit theo U1..U9: 2 = chính, 1 = hỗ trợ, 0 = không dùng
+const P=[
+{t:"H",id:"H1",n:"Làm đủ chuỗi bước vẫn phải ngậm kẹo, xịt thơm",ctx:"Trước họp, trước gặp",cause:"Mỗi vùng một dụng cụ; kết quả phụ thuộc độ khéo; làm nhiều mà vẫn không yên tâm.",fit:[2,1,1,2,0,0,1,1,0],need:[0,3],hook:"Chải, cạo lưỡi, xỉa chỉ, súc miệng… xong vẫn phải ngậm kẹo trước khi vào họp.",mech:"Làm đủ bước mà không chắc → ba vùng gây mùi nằm ở ba dụng cụ → đầu chữ U chăm viền nướu–kẽ, đổi đầu là cạo lưỡi → một hệ, bớt thao tác rời.",conv:"Gom lưỡi + viền nướu + kẽ vào một thân máy, thay chuỗi 4–5 dụng cụ. So với bàn chải điện + chỉ + cạo lưỡi rời + tăm nước 1 chiều."},
+{t:"H",id:"H2",n:"Mảng bám trên lưỡi, vùng dễ gây mùi nhất",ctx:"Soi lưỡi trước gương; trước giờ họp",cause:"Đánh răng không chạm hết bề mặt lưỡi; cạo lưỡi cần thêm một dụng cụ riêng.",fit:[1,0,0,2,0,0,1,1,0],need:[3,0],hook:"Soi lưỡi trước gương: lớp bám trắng mà đánh răng không chạm tới.",mech:"Mảng bám lưỡi → đánh răng không đủ → đầu cạo lưỡi có dòng nước vừa cạo vừa cuốn trôi → thêm một bước nhẹ nhàng trên cùng thân máy.",conv:"Đổi đầu thay dụng cụ cạo lưỡi riêng, có nước cuốn trôi lớp bám. Nhấn mạnh tích hợp, không nói đây là USP riêng."},
+{t:"H",id:"H3",n:"Viền nướu trong–ngoài và kẽ khó chăm đều",ctx:"Mặt trong răng, chân răng",cause:"Tự căn góc bàn chải; chỉ nha khoa xử lý từng kẽ; tăm nước 1 chiều lia từng phía.",fit:[2,2,1,0,0,1,0,0,0],need:[0,1],hook:"Chải kỹ đến mấy, viền nướu mặt trong vẫn là chỗ mình không với tới.",mech:"Viền nướu và kẽ hay giữ cặn → bàn chải khó căn góc mặt trong → đầu chữ U ôm hai phía, 2 tia hội tụ tại kẽ + xung đẩy cặn → chăm hai phía trong một đường lia.",conv:"2 tia 2 phía trong một lượt so với tia 1 chiều phải lia hai lần; xung tần cao hơn để đẩy cặn tại kẽ."},
+{t:"H",id:"H4",n:"Công sở: canh hơi thở khi họp, ngồi gần đồng nghiệp",ctx:"Họp, trao đổi trực diện, gặp khách",cause:"Chia sự chú ý giữa công việc và việc canh hơi thở; sợ bị né tránh hoặc hiểu nhầm lạnh nhạt.",fit:[2,1,0,2,0,0,0,0,0],need:[0,3],hook:"Đồng nghiệp lùi nửa bước, che mũi khi mình đang trình bày.",mech:"Bị né tránh khi nói chuyện gần → nguồn mùi thường ở lưỡi, viền nướu, kẽ → đầu chữ U + đầu cạo lưỡi chăm đúng ba vùng → vào cuộc trao đổi bớt phải canh hơi thở.",conv:"Đề cao chăm đúng vùng gây mùi trong một hệ gọn, thay kẹo/xịt chỉ che mùi tạm thời."},
+{t:"H",id:"H5",n:"Hẹn hò: sợ người ấy nhận ra, né thân mật",ctx:"Trước buổi hẹn, khoảnh khắc gần",cause:"Muốn tạo ấn tượng và tiến gần nhưng phát tín hiệu né tránh; routine dài vẫn không đủ chắc chắn.",fit:[2,1,2,1,0,0,0,1,1],need:[0,2],hook:"Người ấy nghiêng lại gần, mình theo phản xạ quay đi.",mech:"Muốn gần mà phải né → vùng khó chăm kỹ vẫn khiến lo → đầu chữ U chăm đều hai phía, chọn lực nhẹ trước giờ đi → bớt lo, tập trung vào người trước mặt.",conv:"Chăm hai phía đều hơn, chọn lực theo độ nhạy nướu, bớt phụ thuộc độ khéo."},
+{t:"H",id:"H6",n:"Routine nhiều dụng cụ, sợ thêm một thiết bị lỉnh kỉnh",ctx:"Rào cản trước khi mua",cause:"Muốn thêm bước chăm sóc nhưng không muốn routine dài thêm; chưa tin Neo gom được bước.",fit:[2,0,0,2,0,0,1,1,1],need:[0,3],hook:"Kệ nhà tắm thêm 5 dụng cụ răng miệng, xong vẫn chưa yên tâm.",mech:"Routine lỉnh kỉnh → mỗi vùng một dụng cụ → một thân máy, đổi đầu theo vùng → gọn hơn, dễ duy trì.",conv:"Demo so sánh số dụng cụ và số thao tác trước/sau; nhấn mạnh gom bước."},
+{t:"O",id:"O1",n:"Routine làm đẹp lệch bước: răng miệng chỉ có một bước",ctx:"Morning/night routine; GRWM",cause:"Đầu tư skincare, tóc, body nhưng không kiểm tra vùng kẽ; chăm sóc bản thân thấy chưa trọn vẹn.",fit:[2,0,1,0,0,0,1,1,2],need:[0,8],hook:"Skincare 7 bước, makeup cả tiếng — răng miệng vẫn chỉ 1 bước đánh răng.",mech:"Chăm ngoại hình kỹ mà bỏ quên kẽ răng → bàn chải khó tiếp cận kẽ → đầu chữ U làm hai mặt trong một đường lia → thêm một bước nhẹ vào routine để chỉn chu từ trong ra ngoài.",conv:"Bổ sung vùng kẽ mà bàn chải điện chưa chăm hết; thiết kế hợp bộ thiết bị self-care."},
+{t:"O",id:"O2",n:"Thức ăn mắc kẽ lộ khi cười, chụp ảnh, gặp crush",ctx:"Trước date, chụp ảnh, ăn cùng bạn bè",cause:"Không ai kiểm tra vùng kẽ; cặn mắc kẽ chỉ lộ khi đã cười hoặc soi gương.",fit:[2,2,1,0,0,1,0,0,0],need:[0,1],hook:"Soi gương trước giờ date: thức ăn mắc kẽ lộ ra khi cười.",mech:"Makeup đẹp nhưng cười lộ cặn mắc kẽ → bàn chải không tới hết kẽ → hai tia hội tụ tại kẽ + xung đẩy cặn → làm sạch kẽ nhanh trước khi ra khỏi nhà.",conv:"Một đường lia ~20 giây xử lý hai mặt; so với chỉ/tăm phải làm từng kẽ."},
+{t:"O",id:"O3",n:"GRWM / quay video: thiếu bước răng miệng đáng khoe",ctx:"Quay GRWM, tạo nội dung",cause:"Bước răng miệng không có gì hấp dẫn để đưa vào routine hình ảnh đẹp.",fit:[1,0,1,0,0,0,1,1,2],need:[8,7],hook:"GRWM đủ món, chỉ thiếu bước răng miệng.",mech:"Routine đẹp mà thiếu oral care → dụng cụ cũ kém hợp bộ self-care → thiết kế 3 màu, bình nhám đục, ghi nhớ lần dùng → dễ đưa vào routine quay hình.",conv:"Nhấn mạnh thiết kế, dễ demo, ghi nhớ lần dùng; bảo hành 12 tháng cho an tâm."},
+{t:"O",id:"O4",n:"Mua thiết bị self-care rồi bỏ xó, ngại vệ sinh",ctx:"Sau tuần đầu hào hứng",cause:"Thiết bị khó vệ sinh, nhiều thao tác nên nhanh bỏ.",fit:[1,0,0,0,0,0,2,2,1],need:[6,7],hook:"Mua thiết bị theo trend rồi để nằm trong phòng tắm — lần này khác ở đâu?",mech:"Dễ bỏ dùng → thao tác nhiều, khó vệ sinh → bình 300ml tháo rời, ghi nhớ lần dùng → thao tác ngắn, giữ được thói quen.",conv:"Chỉ rõ dễ vệ sinh, một lần đổ đầy đủ một lượt, không phải chỉnh lại mỗi lần."},
+{t:"O",id:"O5",n:"Ngại tăm nước xịt mạnh làm ê nướu",ctx:"Lần đầu dùng tăm nước",cause:"Lo lực nước mạnh gây khó chịu; không biết chọn mức nào.",fit:[0,1,2,0,0,0,0,1,0],need:[2,7],hook:"Nghe nói tăm nước xịt đau nướu nên mình chưa dám mua.",mech:"Lo ê nướu → lực không chỉnh được → 5 chế độ × 10 mức, Sensitive 80 PSI, ghi nhớ mức lần trước → bắt đầu nhẹ và tăng dần.",conv:"So số mức chỉnh và chế độ nhạy cảm với tăm nước ít mức; có chế độ nhớ lần dùng."},
+{t:"B",id:"B1",n:"Cặn mắc quanh mắc cài mà không nhìn thấy, người khác thấy trước",ctx:"Ăn cùng bạn, chụp ảnh, xem lại video",cause:"Mắc cài và dây cung tạo nhiều góc giữ cặn, khó nhìn trực tiếp.",fit:[2,2,1,0,1,1,0,0,0],need:[0,1],hook:"Xem lại ảnh tối qua mới thấy mắc cài dính rau từ đầu buổi.",mech:"Cặn nằm ở chỗ mình không nhìn thấy → mắc cài, dây cung chắn → đầu chữ U luồn qua mắc cài kim loại, 2 tia xử lý hai mặt + xung đẩy cặn → bớt soi, khều từng điểm.",conv:"Demo xịt vào vùng mắc cài thật; so với tia 1 chiều phải xoay từng mặt."},
+{t:"B",id:"B2",n:"Tia 1 chiều phải xoay từng mặt, mặt trong và răng trong cùng khó căn",ctx:"Vệ sinh sau bữa ăn",cause:"Tia chỉ ra một hướng; phải xoay ngược tay cầm để tới mặt trong.",fit:[2,1,0,0,0,1,0,0,0],need:[0,5],hook:"Mặt trong răng trong cùng: xoay ngược tay cầm mà vẫn không biết đã tới chưa.",mech:"Vệ sinh mất công → tia 1 chiều làm từng mặt → đầu chữ U xử lý mặt ngoài và trong cùng lượt, đầu xoay 360° → bớt xoay tay, bớt phụ thuộc độ khéo.",conv:"Bấm giờ so một lượt hai mặt với hai lượt của tia 1 chiều."},
+{t:"B",id:"B3",n:"Niềng khay trong: vội đeo lại khay, nghi răng chưa sạch",ctx:"Tháo khay ăn xong, ngoài đường",cause:"Muốn xử lý kẽ, viền nướu kỹ nhưng thời gian ngắn; tia 1 chiều làm từng mặt.",fit:[2,1,2,0,0,0,1,1,0],need:[0,2],hook:"Tháo khay ăn xong, giờ phải đeo lại — răng đã sạch thật chưa?",mech:"Sắp đeo lại khay nhiều giờ → làm kỹ thì mất thời gian → đầu chữ U xử lý hai mặt nhanh, chọn lực theo nướu → có một bước gọn trước khi đeo lại.",conv:"Nhanh hơn tia 1 chiều khi không còn khí cụ cản; bình 300ml cho lượt vệ sinh nhanh."},
+{t:"B",id:"B4",n:"Lực tia 1 chiều yếu, không đều; nướu lúc nhạy lúc không",ctx:"Dùng hằng ngày suốt liệu trình",cause:"Một mức lực cố định không hợp trạng thái nướu từng thời điểm.",fit:[0,2,2,0,0,0,0,1,0],need:[1,2],hook:"Tăm nước xịt yếu thì không sạch, xịt mạnh thì nướu ê — chỉnh sao?",mech:"Lực không phù hợp → mức cố định → xung tần cao + 50 mức lực chọn theo nướu → chọn nhẹ khi nhạy, tăng khi cần.",conv:"So số mức lực và dải xung tần với tăm nước đang dùng."},
+{t:"B",id:"B5",n:"Một điểm khó riêng lẻ cần xử lý chính xác",ctx:"Điểm cặn hay mắc lặp lại",cause:"Có vài vị trí đặc biệt khó mà đầu chữ U chưa tới được.",fit:[1,0,0,0,2,1,0,0,0],need:[4,0],hook:"Có một chỗ cứ mắc hoài, xịt kiểu nào cũng không tới.",mech:"Điểm khó lặp lại → cần nhắm trúng → đầu tiêu chuẩn tia mảnh 0,72 mm nhắm đúng điểm → bổ sung cho đầu chữ U, không phải điều kiện bắt buộc.",conv:"Nhấn rằng có đầu bổ sung trong cùng bộ, không bán thêm."},
+{t:"B",id:"B6",n:"Rào cản mua: sợ Neo chỉ là một tăm nước 1 chiều khác",ctx:"Đang cân nhắc nâng cấp",cause:"Đã có tăm nước 1 chiều, cần lý do đủ khác để đổi.",fit:[2,2,2,0,1,0,0,0,1],need:[0,1,2],hook:"Đã có tăm nước rồi, Neo khác gì?",mech:"Đây là nội dung CONVERT: vào USP ngay, không cần giải thích nguyên nhân dài.",conv:"Demo cạnh nhau: chữ U 2 chiều luồn mắc cài kim loại, xung tần, 50 mức lực so với tia 1 chiều đang dùng."}];
+const tabs=[["mt","Ma trận nỗi đau × USP"],["cd","Thẻ theo tệp"],["us","USP & claim"]];
+let tab="mt",open=null,tfil="ALL";
+const ico=v=>v==2?'<td class="c m2" title="USP chính">●</td>':v==1?'<td class="c m1" title="Hỗ trợ">○</td>':'<td class="c"></td>';
+const chips=(a)=>a.map(i=>'<span class="chip n">'+U[i][0]+' '+U[i][1]+'</span>').join('');
+function btn(id,items,cur,cb){const e=document.getElementById(id);e.innerHTML="";items.forEach(([k,l])=>{const b=document.createElement("button");b.textContent=l;if(k===cur)b.className="on";b.onclick=()=>cb(k);e.appendChild(b);});}
+function detail(p){return '<div class="card"><h2>'+p.id+' · '+p.n+'</h2><div class="det">'+
+'<div><b>Bối cảnh khai thác</b>'+p.ctx+'</div><div><b>Nguyên nhân</b>'+p.cause+'</div>'+
+'<div><b>Hook NEEDS gợi ý (2 giây đầu)</b>'+p.hook+'</div><div><b>USP chủ đạo cho NEEDS (tối đa 2)</b>'+(p.t=="B"&&p.id=="B6"?'<span class="lo">Không dùng cho NEEDS; làm CONVERT</span>':chips(p.need.slice(0,2)))+'</div>'+
+'<div><b>Mạch NEEDS: Pain → Nguyên nhân → Cơ chế → Lợi ích → Lý do chọn Neo</b>'+p.mech+'</div><div><b>Góc CONVERT: so sánh / chứng minh</b>'+p.conv+'</div>'+
+'<div><b>USP hỗ trợ</b>'+chips(p.fit.map((v,i)=>v==1?i:-1).filter(i=>i>=0))+'</div><div><b>USP chính theo mức khớp</b>'+chips(p.fit.map((v,i)=>v==2?i:-1).filter(i=>i>=0))+'</div></div>'+
+'<div class="warn"><b>Claim cần tránh với tệp này:</b><ul>'+T[p.t].avoid.map(x=>'<li>'+x+'</li>').join('')+'</ul></div></div>';}
+function render(){
+ btn("tabs",tabs,tab,k=>{tab=k;open=null;render();});
+ const v=document.getElementById("view");
+ if(tab=="mt"){
+  let h='<div class="ctl" id="tf"></div><div class="leg"><span><b class="m2" style="padding:0 6px">●</b> USP chính (nên làm hook / cơ chế)</span><span><b class="m1" style="padding:0 6px">○</b> hỗ trợ</span><span>Bấm vào một dòng để xem hook, mạch NEEDS, góc CONVERT và claim cần tránh</span></div><div class="card sc"><table><tr><th class="l">Nỗi đau</th>'+U.map(u=>'<th title="'+u[2]+'">'+u[0]+'<br>'+u[1]+'</th>').join('')+'<th class="l">NEEDS: 2 USP chủ đạo</th></tr>';
+  Object.keys(T).filter(k=>tfil=="ALL"||tfil==k).forEach(k=>{
+   h+='<tr class="grp"><td colspan="'+(U.length+2)+'" style="color:var('+T[k].color+')">'+T[k].name+'</td></tr>';
+   P.filter(p=>p.t==k).forEach(p=>{h+='<tr class="pain" data-id="'+p.id+'"><td class="l"><b>'+p.id+'</b> '+p.n+'</td>'+p.fit.map(ico).join('')+'<td class="l">'+(p.id=="B6"?'<span class="chip">CONVERT</span> '+chips(p.need):chips(p.need.slice(0,2)))+'</td></tr>';
+    if(open==p.id)h+='<tr><td colspan="'+(U.length+2)+'">'+detail(p)+'</td></tr>';});
+  });
+  h+='</table></div>';v.innerHTML=h;
+  btn("tf",[["ALL","Cả 3 tệp"],["H","Hôi miệng"],["O","N-OC-01"],["B","Niềng"]],tfil,k=>{tfil=k;render();});
+  v.querySelectorAll("tr.pain").forEach(r=>r.onclick=()=>{open=open==r.dataset.id?null:r.dataset.id;render();});
+ } else if(tab=="cd"){
+  let h='<div class="g3">';
+  Object.keys(T).forEach(k=>{
+   const ps=P.filter(p=>p.t==k);
+   h+='<div class="card"><h2 style="color:var('+T[k].color+')">'+T[k].name+'</h2><p class="sub">'+T[k].desc+'</p><p style="margin:10px 0 4px"><b>Nỗi đau và USP chủ đạo</b></p><ul>'+ps.map(p=>'<li><b>'+p.id+'</b> '+p.n+'<br>'+(p.id=="B6"?'<span class="chip">CONVERT</span> ':'')+chips(p.id=="B6"?p.need:p.need.slice(0,2))+'</li>').join('')+'</ul><div class="warn"><b>Claim cần tránh</b><ul>'+T[k].avoid.map(x=>'<li>'+x+'</li>').join('')+'</ul></div></div>';});
+  v.innerHTML=h+'</div>';
+ } else {
+  v.innerHTML='<div class="card sc"><h2>Danh sách USP đưa vào map</h2><table><tr><th class="l">Mã</th><th class="l">USP</th><th class="l">Nội dung theo tài liệu</th></tr>'+U.map(u=>'<tr><td class="l"><b>'+u[0]+'</b></td><td class="l">'+u[1]+'</td><td class="l" style="white-space:normal">'+u[2]+'</td></tr>').join('')+'</table></div><div class="card"><h2>Cách đọc map</h2><ul><li><b>NEEDS (70%):</b> chọn tối đa 2 USP chủ đạo cho mỗi video, theo cột cuối của ma trận. Mỗi video: 1 tệp, 1 pain, 1 bối cảnh, 2 USP.</li><li><b>CONVERT (30%):</b> hook gọi thẳng một USP khác biệt, rồi so sánh với tăm nước khác. Dùng USP ● của pain đó làm góc so sánh.</li><li>Mức khớp ●/○ là đánh giá từ cơ chế và pain trong persona. Nên kiểm chứng lại bằng số liệu của các video đã chạy trước khi coi là cố định.</li><li>Tệp hôi miệng và niềng ở tầng nhận thức cao: ưu tiên proof cơ chế và gom bước, không giải thích pain dài.</li></ul></div>';}
+}
+render();
+</script></body></html>
